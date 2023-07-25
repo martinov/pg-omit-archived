@@ -151,7 +151,7 @@ const makeUtils = (
     ? appliesToTable(relevantClass)
       ? {
           expression: (_sql: typeof sql, tableAlias: SQL) =>
-            sql.fragment`(${expression(sql, tableAlias)})`,
+            sql.fragment`(${expression(sql, tableAlias, { pgClass: relevantClass })})`,
           visibleFragment: booleanVisibleFragment,
           invisibleFragment: booleanInvisibleFragment,
         }
@@ -178,7 +178,7 @@ const makeUtils = (
     ? expression
       ? {
           expression: (_sql: typeof sql, tableAlias: SQL) =>
-            sql.fragment`(${expression(sql, tableAlias)})`,
+            sql.fragment`(${expression(sql, tableAlias, { pgClass: parentTable })})`,
           visibleFragment: booleanVisibleFragment,
           invisibleFragment: booleanInvisibleFragment,
         }
